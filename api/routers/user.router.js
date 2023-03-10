@@ -3,12 +3,14 @@ const {authUser} = require('../utils')
 
 const {
     getUserById,
-    updateUser
+    updateUser,
+    deleteUserById
   } = require("../controllers/user.controller")
 
   router
     .get("/profile", authUser, getUserById)
     .put("/profile", authUser, updateUser)
+    .delete("/profile", authUser, deleteUserById)
 
 
 

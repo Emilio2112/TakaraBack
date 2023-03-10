@@ -3,7 +3,8 @@ const bcrypt = require('bcrypt')
 
 module.exports = {
     getUserById,
-    updateUser
+    updateUser,
+    deleteUserById
 }
 
 function getUserById(req, res) {
@@ -22,3 +23,9 @@ function updateUser(req, res) {
             .then((response) => res.json(response))
             .catch((err) => res.json(err))
 }
+
+function deleteUserById(req, res) {
+    UserModel.findByIdAndDelete(res.locals.user.id )
+      .then((response) => res.json(response))
+      .catch((err) => res.json(err));
+  }
