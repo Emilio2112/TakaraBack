@@ -25,7 +25,7 @@ const gameSchema = new mongoose.Schema({
         type: Number
     }],
     platforms: [{
-        type: String
+        type: Object
     }]
 })
 
