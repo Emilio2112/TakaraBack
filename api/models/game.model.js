@@ -3,6 +3,7 @@ const mongoose = require('mongoose')
 const gameSchema = new mongoose.Schema({
     id: {
         type: Number,
+        required: true,
         unique: [true, "This game is registered"]
     },
     name: {
