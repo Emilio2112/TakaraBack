@@ -4,7 +4,7 @@ const gameSchema = new mongoose.Schema({
     id: {
         type: Number,
         required: true,
-        unique: [true, "This game is registered"]
+        unique: true,
     },
     name: {
         type: String,
