@@ -34,7 +34,7 @@ function addGameToCollection(req, res) {
   UserModel
     .findById(res.locals.user.id)
     .then((result) => {
-      result.games.push(req.body.id);
+      result.games.push(req.body._id);
       result.save().then((fav) => {
         res.json(result.games);
       });
