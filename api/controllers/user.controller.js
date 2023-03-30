@@ -31,13 +31,16 @@ function deleteUserById(req, res) {
 }
 
 function addGameToCollection(req, res) {
-  UserModel
-    .findById(res.locals.user.id)
+  UserModel.findById(res.locals.user.id)
     .then((user) => {
-      user.games.push(req.body._id);
-      user.save().then((fav) => {
-        res.json(user.games);
-      });
+      if (user.games.toString().split(",").includes(req.body._id)=== true) {
+        return res.json("El juego ya está en la colección")
+      } else {
+        user.games.push(req.body._id);
+        user.save().then((fav) => {
+          res.json(user.games);
+        });
+      }
     })
     .catch((err) => res.json(err));
 }
