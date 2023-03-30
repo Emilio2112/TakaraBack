@@ -20,18 +20,18 @@ const userSchema = new mongoose.Schema({
         enum: ["admin", "user"],
         default: "user"
       },
-      games: {
-        type: Array,
-        required: false
-      },
-      playing: {
-        type: Array,
-        required: false
-      },
-      completed: {
-        type: Array,
-        required: false
-      }
+      games: [{
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'game'
+      }],
+      playing: [{
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'game'
+      }],
+      completed: [{
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'game'
+      }]
 });
 
 const userModel = mongoose.model("user", userSchema);
