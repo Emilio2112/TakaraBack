@@ -33,10 +33,10 @@ function deleteUserById(req, res) {
 function addGameToCollection(req, res) {
   UserModel
     .findById(res.locals.user.id)
-    .then((result) => {
-      result.games.push(req.body._id);
-      result.save().then((fav) => {
-        res.json(result.games);
+    .then((user) => {
+      user.games.push(req.body._id);
+      user.save().then((fav) => {
+        res.json(user.games);
       });
     })
     .catch((err) => res.json(err));
