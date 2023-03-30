@@ -26,15 +26,17 @@ function updateGame(req, res) {
 }
 
 function deleteGame(req, res) {
-    Game.findByIdAndDelete(req.params.id)
+  Game.findByIdAndDelete(req.params.id)
     .then((result) => res.json(result))
-    .catch((error) => res.json(error))
+    .catch((error) => res.json(error));
 }
 
+
+
 module.exports = {
-    getAllGames,
-    getGame,
-    createGame,
-    updateGame,
-    deleteGame
-}
+  getAllGames,
+  getGame,
+  createGame,
+  updateGame,
+  deleteGame
+};

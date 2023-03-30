@@ -4,13 +4,15 @@ const {authUser} = require('../utils')
 const {
     getUserById,
     updateUser,
-    deleteUserById
+    deleteUserById,
+    addGameToCollection
   } = require("../controllers/user.controller")
 
   router
     .get("/profile", authUser, getUserById)
     .put("/profile", authUser, updateUser)
     .delete("/profile", authUser, deleteUserById)
+    .patch("/favorite/add", authUser, addGameToCollection)
 
 
 
