@@ -3,6 +3,7 @@ const bcrypt = require("bcrypt");
 
 module.exports = {
   getUserById,
+  getUserCollection,
   updateUser,
   deleteUserById,
   addGameToCollection,
@@ -10,6 +11,13 @@ module.exports = {
 
 function getUserById(req, res) {
   res.json(res.locals.user);
+}
+
+function getUserCollection(req, res) {
+  UserModel.findById(res.locals.user.id)
+    .populate("games")
+    .then((response) => res.json(response.games))
+    .catch((err) => res.json(err));
 }
 
 function updateUser(req, res) {
@@ -33,8 +41,8 @@ function deleteUserById(req, res) {
 function addGameToCollection(req, res) {
   UserModel.findById(res.locals.user.id)
     .then((user) => {
-      if (user.games.toString().split(",").includes(req.body._id)=== true) {
-        return res.json("El juego ya está en la colección")
+      if (user.games.toString().split(",").includes(req.body._id) === true) {
+        return res.json("El juego ya está en la colección");
       } else {
         user.games.push(req.body._id);
         user.save().then((fav) => {
