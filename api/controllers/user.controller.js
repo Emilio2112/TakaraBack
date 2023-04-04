@@ -25,14 +25,14 @@ function getUserCollection(req, res) {
 function getUserPlaying(req, res) {
   UserModel.findById(res.locals.user.id)
     .populate("playing")
-    .then((response) => res.json(response.games))
+    .then((response) => res.json(response.playing))
     .catch((err) => res.json(err));
 }
 
 function getUserCompleted(req, res) {
   UserModel.findById(res.locals.user.id)
     .populate("completed")
-    .then((response) => res.json(response.games))
+    .then((response) => res.json(response.completed))
     .catch((err) => res.json(err));
 }
 
