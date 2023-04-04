@@ -4,6 +4,8 @@ const { authUser } = require("../utils");
 const {
   getUserById,
   getUserCollection,
+  getUserPlaying,
+  getUserCompleted,
   updateUser,
   deleteUserById,
   addGameToCollection,
@@ -12,6 +14,8 @@ const {
 router
   .get("/profile", authUser, getUserById)
   .get("/collection", authUser, getUserCollection)
+  .get("/playing", authUser, getUserPlaying)
+  .get("/completd", authUser, getUserCompleted)
   .put("/profile", authUser, updateUser)
   .delete("/profile", authUser, deleteUserById)
   .patch("/favorite/add", authUser, addGameToCollection);
