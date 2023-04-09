@@ -9,6 +9,7 @@ const {
   updateUser,
   deleteUserById,
   addGameToCollection,
+  addGameToPlaying
 } = require("../controllers/user.controller");
 
 router
@@ -18,6 +19,7 @@ router
   .get("/completed", authUser, getUserCompleted)
   .put("/profile", authUser, updateUser)
   .delete("/profile", authUser, deleteUserById)
-  .patch("/favorite/add", authUser, addGameToCollection);
+  .patch("/favorite/add", authUser, addGameToCollection)
+  .patch("/playing/add", authUser, addGameToPlaying)
 
 module.exports = router;
