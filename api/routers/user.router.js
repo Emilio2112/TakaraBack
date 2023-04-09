@@ -9,7 +9,8 @@ const {
   updateUser,
   deleteUserById,
   addGameToCollection,
-  addGameToPlaying
+  addGameToPlaying,
+  addGameToCompleted
 } = require("../controllers/user.controller");
 
 router
@@ -21,5 +22,6 @@ router
   .delete("/profile", authUser, deleteUserById)
   .patch("/favorite/add", authUser, addGameToCollection)
   .patch("/playing/add", authUser, addGameToPlaying)
+  .patch("/completed/add", authUser, addGameToCompleted)
 
 module.exports = router;

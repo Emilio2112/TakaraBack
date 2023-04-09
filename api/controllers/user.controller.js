@@ -9,7 +9,8 @@ module.exports = {
   updateUser,
   deleteUserById,
   addGameToCollection,
-  addGameToPlaying
+  addGameToPlaying,
+  addGameToCompleted
 };
 
 function getUserById(req, res) {
@@ -74,6 +75,19 @@ function addGameToPlaying(req, res) {
   UserModel.findById(res.locals.user.id)
     .then((result) => {
       result.playing.push(req.body.id);
+      result.save().then((fav) => {
+        res.json(result.playing);
+      });
+    })
+    .catch((err) => res.json(err));
+}
+
+function addGameToCompleted(req, res) {
+  UserModel.findById(res.locals.user.id)
+    .then((result) => {
+      let index = result.playing.indexOf(req.body.id);
+      result.playing.splice(index, 1);
+      result.completed.push(req.body.id);
       result.save().then((fav) => {
         res.json(result.playing);
       });
