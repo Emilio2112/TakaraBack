@@ -16,21 +16,21 @@ function getUserById(req, res) {
 }
 
 function getUserCollection(req, res) {
-  UserModel.findById(res.locals.user.id)
+  UserModel.findById(req.locals.user.id)
     .populate("games")
     .then((response) => res.json(response.games))
     .catch((err) => res.json(err));
 }
 
 function getUserPlaying(req, res) {
-  UserModel.findById(res.locals.user.id)
+  UserModel.findById(re.locals.user.id)
     .populate("playing")
     .then((response) => res.json(response.playing))
     .catch((err) => res.json(err));
 }
 
 function getUserCompleted(req, res) {
-  UserModel.findById(res.locals.user.id)
+  UserModel.findById(req.locals.user.id)
     .populate("completed")
     .then((response) => res.json(response.completed))
     .catch((err) => res.json(err));
