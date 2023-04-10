@@ -74,7 +74,8 @@ function addGameToCollection(req, res) {
 function addGameToPlaying(req, res) {
   UserModel.findById(res.locals.user.id)
     .then((result) => {
-      result.playing.push(req.body.id);
+      result.playing.push(req.body._id);
+      console.log(req.body._id)
       result.save().then((fav) => {
         res.json(result.playing);
       });
@@ -85,11 +86,12 @@ function addGameToPlaying(req, res) {
 function addGameToCompleted(req, res) {
   UserModel.findById(res.locals.user.id)
     .then((result) => {
-      let index = result.playing.indexOf(req.body.id);
+      let index = result.playing.indexOf(req.body._id);
       result.playing.splice(index, 1);
-      result.completed.push(req.body.id);
+      console.log(result)
+      result.completed.push(req.body._id);
       result.save().then((fav) => {
-        res.json(result.playing);
+        res.json(result.completed);
       });
     })
     .catch((err) => res.json(err));
