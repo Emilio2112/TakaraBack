@@ -31,7 +31,19 @@ const gameSchema = new mongoose.Schema({
     }],
     platforms: [{
         type: Object
-    }]
+    }],
+    screenshots: [{
+        type: Object
+    }],
+    metacritic: {
+        type: Number
+    },
+    metacritic_url: {
+        type: String
+    },
+    ersb_rating: {
+        type: Object
+    }
 })
 
 const gameModel = mongoose.model('game', gameSchema)
