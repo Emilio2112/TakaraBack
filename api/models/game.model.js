@@ -41,7 +41,7 @@ const gameSchema = new mongoose.Schema({
     metacritic_url: {
         type: String
     },
-    ersb_rating: {
+    esrb_rating: {
         type: Object
     }
 })
