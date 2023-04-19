@@ -16,7 +16,7 @@ const {
 router.get('/', getAllGames)
 router.get('/:id', getGame)
 router.post('/',authUser, createGame)
-router.put('/:id',authUser, adminCheck, updateGame)
+router.put('/:id',authUser, updateGame)
 router.delete('/:id',authUser, adminCheck, deleteGame)
 
 module.exports = router
