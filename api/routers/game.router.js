@@ -4,7 +4,7 @@ const {
     getAllGames,
     getGame,
     createGame,
-    updateGame,
+    updateGameStats,
     deleteGame
 } = require('../controllers/game.controller')
 
@@ -16,7 +16,7 @@ const {
 router.get('/', getAllGames)
 router.get('/:id', getGame)
 router.post('/',authUser, createGame)
-router.put('/:id',authUser, updateGame)
+router.put('/:id',authUser, updateGameStats)
 router.delete('/:id',authUser, adminCheck, deleteGame)
 
 module.exports = router

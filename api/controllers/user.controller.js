@@ -75,7 +75,6 @@ function addGameToPlaying(req, res) {
   UserModel.findById(res.locals.user.id)
     .then((result) => {
       result.playing.push(req.body._id);
-      console.log(req.body._id)
       result.save().then((fav) => {
         res.json(result.playing);
       });
