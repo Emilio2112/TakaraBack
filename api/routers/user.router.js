@@ -2,6 +2,7 @@ const router = require("express").Router();
 const { authUser } = require("../utils");
 
 const {
+  getAllUsers,
   getUserById,
   getUserCollection,
   getUserPlaying,
@@ -14,6 +15,7 @@ const {
 } = require("../controllers/user.controller");
 
 router
+  .get("/", authUser, getAllUsers)
   .get("/profile", authUser, getUserById)
   .get("/collection", authUser, getUserCollection)
   .get("/playing", authUser, getUserPlaying)

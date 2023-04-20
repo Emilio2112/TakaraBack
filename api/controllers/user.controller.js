@@ -2,6 +2,7 @@ const UserModel = require("../models/user.model");
 const bcrypt = require("bcrypt");
 
 module.exports = {
+  getAllUsers,
   getUserById,
   getUserCollection,
   getUserPlaying,
@@ -12,6 +13,11 @@ module.exports = {
   addGameToPlaying,
   addGameToCompleted
 };
+function getAllUsers(req,res) {
+  UserModel.find()
+    .then((users) => res.json(users))
+    .catch((err) => res.json(err));
+}
 
 function getUserById(req, res) {
   res.json(res.locals.user);
