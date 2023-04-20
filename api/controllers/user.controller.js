@@ -66,7 +66,7 @@ function addGameToCollection(req, res) {
   UserModel.findById(res.locals.user.id)
     .then((user) => {
       if (user.games.toString().split(",").includes(req.body._id) === true) {
-        return res.json("El juego ya está en la colección");
+        return res.json(req.body._id);
       } else {
         user.games.push(req.body._id);
         user.save().then((fav) => {
