@@ -43,6 +43,9 @@ const gameSchema = new mongoose.Schema({
     },
     esrb_rating: {
         type: Object
+    },
+    website: {
+        type: String
     }
 })
 
