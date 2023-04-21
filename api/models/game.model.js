@@ -25,7 +25,7 @@ const gameSchema = new mongoose.Schema({
     time: [{
         type: Number
     }],
-    ratings: [{
+    rates: [{
         type: Number
     }],
     platforms: [{
