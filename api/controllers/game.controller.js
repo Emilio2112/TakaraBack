@@ -23,7 +23,7 @@ function updateGameStats(req, res) {
   Game.findById(req.params.id)
     .then((result) => {
       result.time.push(req.body.time)
-      result.ratings.push(req.body.ratings)
+      result.rating.push(req.body.rating)
       result.save()
       res.json(result)
     })
