@@ -10,6 +10,7 @@ module.exports = {
   updateUser,
   deleteUserById,
   addGameToCollection,
+  deleteGameFromCollection,
   addGameToPlaying,
   addGameToCompleted
 };
@@ -73,6 +74,20 @@ function addGameToCollection(req, res) {
           res.json(user.games);
         });
       }
+    })
+    .catch((err) => res.json(err));
+}
+
+function deleteGameFromCollection(req, res) {
+  UserModel.findById(res.locals.user.id)
+    .then((user) => {
+      if(user.games.indexOf(req.body._id) !== -1)
+      user.games.splice(user.games.indexOf(req.body._id),1)
+      if(user.playing.indexOf(req.body._id) !== -1) {
+        user.playing.splice(user.playing.indexOf(req.body._id),1)
+      }
+      user.save().then(
+        res.json(user));
     })
     .catch((err) => res.json(err));
 }
